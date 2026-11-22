@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easypay | Create account</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="auth-brand">
+        <img src="easypay-logo.png" alt="Easypay logo">
+        <span>easypay</span>
+      </div>
+      <h1>Create account</h1>
+      <p>Open your demo wallet in a minute.</p>
+
+      <form id="registerForm">
+        <label for="fullName">Full name</label>
+        <input id="fullName" name="fullName" type="text" maxlength="100" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" maxlength="150" required>
+
+        <label for="phone">Mobile number</label>
+        <input id="phone" name="phone" type="tel" placeholder="03XXXXXXXXX" maxlength="20">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" minlength="8" required>
+
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" required>
+
+        <button class="auth-button" type="submit">Create account</button>
+        <div class="auth-message" id="authMessage"></div>
+      </form>
+
+      <div class="auth-switch">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Easypay — a modern wallet dashboard frontend demo.">
+  <title>Easypay | Digital Wallet</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Easypay home">
+        <img class="brand-logo" src="easypay-logo.png" alt="Easypay logo"><span>easypay<span class="brand-dot">.</span></span>
+      </a>
+      <div class="profile-mini">
+        <div class="avatar">N</div>
+        <div><strong>Hi, Nimra!</strong><small>Personal account</small></div>
+      </div>
+      <nav class="side-nav">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">▦</span> Overview</a>
+        <a class="nav-link" href="#payments"><span class="nav-icon">↗</span> Send money</a>
+        <a class="nav-link" href="#payments"><span class="nav-icon">＋</span> Add money</a>
+        <a class="nav-link" href="#bills"><span class="nav-icon">▤</span> Bill payments</a>
+        <a class="nav-link" href="#history"><span class="nav-icon">◷</span> Transaction history</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">?</span><strong>Need a hand?</strong><p>Visit our help centre for support.</p><button class="text-button" data-action="help">Get help <span>→</span></button></div>
+        <a class="nav-link" href="#settings"><span class="nav-icon">⚙</span> Settings</a>
+        <a class="nav-link" href="#logout" data-action="logout"><span class="nav-icon">⇥</span> Log out</a>
+      </div>
+    </aside>
+
+<main class="main-content" id="overview">
+    <header class="topbar">
+
+        <!-- Mobile Logo + Brand Name -->
+        <a class="mobile-brand" href="#" aria-label="Easypay home">
+            <img src="easypay-logo.png" alt="Easypay logo">
+            <span>easypay<span class="brand-dot">.</span></span>
+        </a>
+
+        <button class="mobile-menu" id="menuToggle"
+            aria-label="Open navigation" aria-expanded="false">☰</button>
+
+        <div class="welcome">
+            <span class="eyebrow">THURSDAY, 20 NOVEMBER 2026</span>
+            <h1>Your money, <span>your move.</span></h1>
+        </div>
+
+        <div class="top-actions">
+            <button class="icon-button notification-button"
+                aria-label="Notifications" data-action="notifications">♧<i></i></button>
+            <div class="top-avatar">N</div>
+        </div>
+
+    </header>
+
+      <section class="dashboard-grid" aria-label="Wallet overview">
+        <article class="balance-card">
+          <div class="balance-top"><span class="balance-label">TOTAL WALLET BALANCE</span><span class="secure-pill"><span>●</span> Demo account</span></div>
+          <div class="balance-line"><h2 id="balanceAmount">Rs. 24,850<span>.00</span></h2><button id="toggleBalance" class="eye-button" aria-label="Hide balance" title="Show or hide balance">◉</button></div>
+          <p class="balance-note">Your available balance</p>
+          <div class="balance-footer"><span>•••• &nbsp; •••• &nbsp; •••• &nbsp; 4821</span><span>easypay wallet</span></div>
+          <div class="card-orb orb-one"></div><div class="card-orb orb-two"></div>
+        </article>
+
+        <article class="quick-card" id="payments">
+          <div class="section-heading"><div><span class="eyebrow">SHORTCUTS</span><h2>Quick actions</h2></div><span class="tiny-spark">✦</span></div>
+          <div class="action-grid">
+            <button class="action-item" data-action="send"><span class="action-icon send-icon">↗</span><strong>Send money</strong><small>Transfer instantly</small></button>
+            <button class="action-item" data-action="add"><span class="action-icon add-icon">＋</span><strong>Add money</strong><small>Top up wallet</small></button>
+            <button class="action-item" data-action="bills"><span class="action-icon bill-icon">▤</span><strong>Pay bills</strong><small>Utilities & more</small></button>
+            <button class="action-item" data-action="mobile"><span class="action-icon mobile-icon">▯</span><strong>Mobile load</strong><small>Easy top-up</small></button>
+          </div>
+        </article>
+
+        <article class="spending-card">
+          <div class="section-heading"><div><span class="eyebrow">YOUR ACTIVITY</span><h2>Monthly overview</h2></div><span class="month-chip">November⌄</span></div>
+          <div class="spending-numbers"><div><small>Money received</small><strong class="received">+ Rs. 32,500</strong></div><div><small>Money sent</small><strong class="sent">− Rs. 12,200</strong></div></div>
+          <div class="bar-chart" aria-label="Illustrative weekly activity chart">
+            <div class="bar-group"><span class="bar received-bar" style="height:45%"></span><span class="bar sent-bar" style="height:22%"></span><small>W1</small></div>
+            <div class="bar-group"><span class="bar received-bar" style="height:72%"></span><span class="bar sent-bar" style="height:35%"></span><small>W2</small></div>
+            <div class="bar-group"><span class="bar received-bar" style="height:54%"></span><span class="bar sent-bar" style="height:27%"></span><small>W3</small></div>
+            <div class="bar-group"><span class="bar received-bar" style="height:90%"></span><span class="bar sent-bar" style="height:42%"></span><small>W4</small></div>
+          </div>
+          <div class="chart-legend"><span><i class="legend-dot green-dot"></i>Received</span><span><i class="legend-dot navy-dot"></i>Sent</span></div>
+        </article>
+
+        <article class="transactions-card" id="history">
+          <div class="section-heading transaction-heading"><div><span class="eyebrow">RECENT ACTIVITY</span><h2>Recent transactions</h2></div><button class="view-all" id="viewAll">View all <span>→</span></button></div>
+          <div class="filter-row" role="group" aria-label="Filter transactions">
+            <button class="filter-chip active" data-filter="all">All</button><button class="filter-chip" data-filter="received">Received</button><button class="filter-chip" data-filter="sent">Sent</button>
+          </div>
+          <div class="transaction-list" id="transactionList">
+            <div class="transaction-row" data-type="received"><div class="transaction-icon income">↓</div><div class="transaction-info"><strong>Salary received</strong><small>Today, 10:42 AM · Bank transfer</small></div><strong class="transaction-amount positive">+ Rs. 18,500</strong><span class="status">Completed</span></div>
+            <div class="transaction-row" data-type="sent"><div class="transaction-icon expense">↗</div><div class="transaction-info"><strong>Sent to Ayesha</strong><small>Yesterday, 6:18 PM · Easypay user</small></div><strong class="transaction-amount">− Rs. 2,000</strong><span class="status">Completed</span></div>
+            <div class="transaction-row" data-type="received"><div class="transaction-icon income">↓</div><div class="transaction-info"><strong>Cashback reward</strong><small>18 Nov, 2:05 PM · Reward</small></div><strong class="transaction-amount positive">+ Rs. 250</strong><span class="status">Completed</span></div>
+            <div class="transaction-row" data-type="sent"><div class="transaction-icon expense">↗</div><div class="transaction-info"><strong>Electricity bill</strong><small>16 Nov, 11:30 AM · Utility payment</small></div><strong class="transaction-amount">− Rs. 3,450</strong><span class="status">Completed</span></div>
+          </div>
+          <p class="demo-note">Sample activity for preview only. No real payments are made.</p>
+        </article>
+
+        <article class="promo-card" id="bills">
+          <div class="promo-content"><span class="promo-tag">SMART & SIMPLE</span><h2>All your payments.<br><em>One easy place.</em></h2><p>Manage everyday payments with a few simple taps.</p><button class="promo-button" data-action="explore">Explore services <span>→</span></button></div>
+          <div class="promo-art"><div class="art-circle"><img src="easypay-logo.png" alt="Easypay logo"></div><div class="art-spark spark-a">✦</div><div class="art-spark spark-b">✧</div></div>
+        </article>
+      </section>
+      <footer class="page-footer"><span>© 2026 Easypay · Frontend concept demo</span><span>Designed for simple everyday payments <b>✦</b></span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="action-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+      <span class="modal-symbol" id="modalSymbol">↗</span><span class="eyebrow">EASYPAY DEMO</span>
+      <h2 id="modalTitle">Send money</h2>
+      <p id="modalDescription">Try the wallet flow. This is a frontend-only preview.</p>
+      <form id="demoForm">
+        <label for="recipientField" id="recipientLabel">Recipient name or mobile number</label>
+        <input id="recipientField" name="recipient" type="text" placeholder="e.g. 03XX XXXXXXX" autocomplete="off" required>
+        <label for="amountField">Amount (PKR)</label>
+        <input id="amountField" name="amount" type="number" min="1" max="1000000" placeholder="Enter amount" required>
+        <button class="submit-button" type="submit" id="submitAction">Continue <span>→</span></button>
+      </form>
+      <small class="modal-disclaimer">Demo only — do not enter real banking credentials or sensitive information.</small>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
