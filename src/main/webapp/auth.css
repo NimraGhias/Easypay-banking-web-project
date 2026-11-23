@@ -53,3 +53,79 @@
 .auth-message { margin-top: 12px; font-size: 14px; min-height: 20px; }
 .auth-switch { margin-top: 18px; text-align: center; font-size: 14px; }
 .auth-switch a { color: var(--green-dark); font-weight: 700; }
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+.popup-box {
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+  text-align: center;
+}
+.popup-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 28px;
+  line-height: 56px;
+}
+.popup-box h2 { margin: 0 0 8px; font-size: 22px; }
+.popup-box p { margin: 0 0 20px; color: var(--muted); }
+.popup-box button {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+}
+.strength { margin-top: 10px; }
+.strength-bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+#strengthFill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 99px;
+  transition: width 0.25s, background 0.25s;
+}
+#strengthFill.level-weak   { width: 25%;  background: #e74c3c; }
+#strengthFill.level-medium { width: 50%;  background: #f39c12; }
+#strengthFill.level-strong { width: 75%;  background: #2ecc71; }
+#strengthFill.level-very   { width: 100%; background: #1e8e3e; }
+
+.strength-label { margin-top: 6px; font-size: 13px; font-weight: 700; }
+.strength-label.level-weak   { color: #e74c3c; }
+.strength-label.level-medium { color: #f39c12; }
+.strength-label.level-strong { color: #2ecc71; }
+.strength-label.level-very   { color: #1e8e3e; }
+
+.rules {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.rules li::before { content: "✗ "; color: #c0392b; font-weight: 700; }
+.rules li.met { color: #1e8e3e; }
+.rules li.met::before { content: "✓ "; color: #1e8e3e; }

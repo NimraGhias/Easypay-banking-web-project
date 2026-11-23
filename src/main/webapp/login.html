@@ -6,6 +6,7 @@
   <title>Easypay | Log in</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="auth.css">
+  <script src="auth.js" defer></script>
 </head>
 <body>
   <main class="auth-page">
@@ -18,11 +19,14 @@
       <p>Log in to your demo wallet.</p>
 
       <form id="loginForm">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
+        <label for="identifier">Email or mobile number</label>
+        <input id="identifier" name="identifier" type="text"
+               placeholder="name@mail.com or 03XXXXXXXXX"
+               autocomplete="username" required>
 
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required>
+        <label for="pin">PIN</label>
+        <input id="pin" name="pin" type="password" inputmode="numeric"
+               maxlength="5" autocomplete="current-password" required>
 
         <button class="auth-button" type="submit">Log in</button>
         <div class="auth-message" id="authMessage"></div>
@@ -34,7 +38,4 @@
     </section>
   </main>
 </body>
-
-  <script src="login.js" defer></script>
-  
 </html>

@@ -20,7 +20,7 @@ public class RegisterServlet extends HttpServlet {
         String fullName;
         String email;
         String phone;
-        String password;
+        String pin;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
         try {
             RegisterRequest data = JsonUtil.readBody(request, RegisterRequest.class);
 
-            authService.register(data.fullName, data.email, data.phone, data.password);
+            authService.register(data.fullName, data.email, data.phone, data.pin);
 
             JsonUtil.write(response, 201, true, "Account created. Please log in.");
 
@@ -39,8 +39,9 @@ public class RegisterServlet extends HttpServlet {
 
         } catch (SQLException e) {
             if (e.getErrorCode() == 1062) {
-                // Duplicate email (database ka UNIQUE rule)
-                JsonUtil.write(response, 409, false, "This email is already registered.");
+                // Duplicate email ya mobile (database ka UNIQUE rule)
+                JsonUtil.write(response, 409, false,
+                        "This email or mobile number is already registered.");
             } else {
                 getServletContext().log("Register failed", e);
                 JsonUtil.write(response, 500, false, "Something went wrong. Please try again.");

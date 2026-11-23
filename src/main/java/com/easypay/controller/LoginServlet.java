@@ -20,8 +20,8 @@ public class LoginServlet extends HttpServlet {
     private final AuthService authService = new AuthService();
 
     private static class LoginRequest {
-        String email;
-        String password;
+        String identifier; // email ya mobile number
+        String pin;
     }
 
     @Override
@@ -30,11 +30,11 @@ public class LoginServlet extends HttpServlet {
         try {
             LoginRequest data = JsonUtil.readBody(request, LoginRequest.class);
 
-            User user = authService.login(data.email, data.password);
+            User user = authService.login(data.identifier, data.pin);
 
             if (user == null) {
-                // Email ghalat ho ya password, message ek hi hai
-                JsonUtil.write(response, 401, false, "Invalid email or password.");
+                // Email/mobile ghalat ho ya PIN, message ek hi hai
+                JsonUtil.write(response, 401, false, "Invalid email, mobile number or PIN.");
                 return;
             }
 
@@ -53,6 +53,10 @@ public class LoginServlet extends HttpServlet {
             body.put("message", "Login successful.");
             body.put("fullName", user.getFullName());
             JsonUtil.writeJson(response, 200, body);
+
+        } catch (IllegalStateException e) {
+            // Account lock hai
+            JsonUtil.write(response, 429, false, e.getMessage());
 
         } catch (IllegalArgumentException e) {
             JsonUtil.write(response, 400, false, e.getMessage());

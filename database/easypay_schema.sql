@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS easypay_db;
+USE easypay_db;
+
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS wallets;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    user_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL UNIQUE,
+    pin_hash VARCHAR(255) NOT NULL,
+    failed_attempts INT NOT NULL DEFAULT 0,
+    locked_until TIMESTAMP NULL,
+    account_status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE wallets (
+    wallet_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL UNIQUE,
+    balance DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+    currency CHAR(3) NOT NULL DEFAULT 'PKR',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);

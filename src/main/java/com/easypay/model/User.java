@@ -6,7 +6,9 @@ public class User {
     private String fullName;
     private String email;
     private String phone;
-    private String passwordHash;
+    private String pinHash;
+    private int failedAttempts;
+    private boolean locked;
     private String accountStatus;
 
     public long getUserId() { return userId; }
@@ -21,8 +23,15 @@ public class User {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
-    public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public String getPinHash() { return pinHash; }
+    public void setPinHash(String pinHash) { this.pinHash = pinHash; }
+
+    public int getFailedAttempts() { return failedAttempts; }
+    public void setFailedAttempts(int failedAttempts) { this.failedAttempts = failedAttempts; }
+
+    // true ka matlab: account abhi lockout mein hai
+    public boolean isLocked() { return locked; }
+    public void setLocked(boolean locked) { this.locked = locked; }
 
     public String getAccountStatus() { return accountStatus; }
     public void setAccountStatus(String accountStatus) { this.accountStatus = accountStatus; }

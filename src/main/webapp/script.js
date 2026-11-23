@@ -213,9 +213,10 @@ document.querySelectorAll("[data-action]").forEach((button) => {
 
                 event.preventDefault();
 
-                showToast(
-                    "Logout is a demo interaction only."
-                );
+                fetch("api/auth/logout", { method: "POST" })
+                    .finally(() => {
+                        window.location.href = "login.html";
+                    });
 
                 break;
 
@@ -493,7 +494,49 @@ if (menuToggle && sidebar) {
 
 
 /* =========================================
-   14. CONSOLE MESSAGE
+   14. LOGGED-IN USER (naam session se)
+========================================= */
+
+async function loadCurrentUser() {
+
+    try {
+
+        const response = await fetch("api/auth/me");
+
+        if (response.status === 401) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        const data = await response.json();
+
+        const name = data.fullName || "User";
+        const firstName = name.split(" ")[0];
+        const initial = name.charAt(0).toUpperCase();
+
+        const nameEl = document.querySelector("#userName");
+
+        if (nameEl) {
+            nameEl.textContent = "Hi, " + firstName + "!";
+        }
+
+        document.querySelectorAll("#userAvatar, #topAvatar").forEach((el) => {
+            el.textContent = initial;
+        });
+
+    } catch (e) {
+
+        console.warn("Could not load user", e);
+
+    }
+
+}
+
+loadCurrentUser();
+
+
+/* =========================================
+   15. CONSOLE MESSAGE
 ========================================= */
 
 console.log(

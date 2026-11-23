@@ -6,6 +6,7 @@
   <title>Easypay | Create account</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="auth.css">
+  <script src="auth.js" defer></script>
 </head>
 <body>
   <main class="auth-page">
@@ -25,13 +26,21 @@
         <input id="email" name="email" type="email" maxlength="150" required>
 
         <label for="phone">Mobile number</label>
-        <input id="phone" name="phone" type="tel" placeholder="03XXXXXXXXX" maxlength="20">
+        <input id="phone" name="phone" type="tel" placeholder="03XXXXXXXXX" maxlength="20" required>
 
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" minlength="8" required>
+        <label for="pin">Create 5-digit PIN</label>
+        <input id="pin" name="pin" type="password" inputmode="numeric"
+               maxlength="5" autocomplete="new-password" required>
 
-        <label for="confirmPassword">Confirm password</label>
-        <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" required>
+        <ul class="rules" id="pinRules">
+          <li data-rule="digits">Only numbers (0-9)</li>
+          <li data-rule="length">Exactly 5 digits</li>
+          <li data-rule="strong">Not an easy PIN (12345, 11111)</li>
+        </ul>
+
+        <label for="confirmPin">Confirm PIN</label>
+        <input id="confirmPin" name="confirmPin" type="password" inputmode="numeric"
+               maxlength="5" autocomplete="new-password" required>
 
         <button class="auth-button" type="submit">Create account</button>
         <div class="auth-message" id="authMessage"></div>
